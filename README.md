@@ -1,2 +1,2 @@
 # Wizards-Soul
-A Little Dungeons Game
+A Little Dungeon Game
