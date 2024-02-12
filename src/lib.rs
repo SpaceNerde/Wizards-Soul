@@ -1,6 +1,6 @@
 mod player;
 mod camera_handler;
-mod magic;
+pub mod magic;
 mod dungeon_generator;
 
 use crate::player::PlayerPlugin;

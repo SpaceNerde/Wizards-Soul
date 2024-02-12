@@ -1,11 +1,12 @@
 use bevy::prelude::*;
+use crate::magic::*;
 
 pub struct PlayerPlugin;
 
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Startup, player_setup);
-        app.add_systems(Update, (player_movement, player_animation_handler));
+        app.add_systems(Update, (player_movement, player_animation_handler, player_attack));
     }
 }
 
@@ -97,5 +98,22 @@ fn player_movement(
 
             transform.translation += direction * 100. * time.delta_seconds();
         }
+    }
+}
+
+// Handels all kinds of attack event? (means it does not include interact)
+fn player_attack(
+    query: Query<&Transform, With<Player>>,
+    mouse_input: Res<Input<MouseButton>>,
+    mut commands: Commands,
+    asset_server: Res<AssetServer>,
+    mut texture_atlases: ResMut<Assets<TextureAtlas>>,
+) {
+    match query.get_single() {
+        Ok(transform) => {
+            if mouse_input.pressed(MouseButton::Left) {
+            }
+        }
+        _ => {}
     }
 }
